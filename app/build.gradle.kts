@@ -7,6 +7,7 @@ repositories {
 }
 
 dependencies {
+    implementation("org.snakeyaml:snakeyaml-engine:2.3")
 }
 
 application {
