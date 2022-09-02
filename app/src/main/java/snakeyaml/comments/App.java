@@ -3,7 +3,6 @@ package snakeyaml.comments;
 import org.snakeyaml.engine.v2.api.DumpSettings;
 import org.snakeyaml.engine.v2.api.StreamDataWriter;
 import org.snakeyaml.engine.v2.comments.CommentType;
-import org.snakeyaml.engine.v2.common.ScalarStyle;
 import org.snakeyaml.engine.v2.emitter.Emitter;
 import org.snakeyaml.engine.v2.events.*;
 
