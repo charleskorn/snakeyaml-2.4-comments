@@ -3,6 +3,7 @@ package snakeyaml.comments;
 import org.snakeyaml.engine.v2.api.DumpSettings;
 import org.snakeyaml.engine.v2.api.StreamDataWriter;
 import org.snakeyaml.engine.v2.comments.CommentType;
+import org.snakeyaml.engine.v2.common.ScalarStyle;
 import org.snakeyaml.engine.v2.emitter.Emitter;
 import org.snakeyaml.engine.v2.events.*;
 
@@ -13,12 +14,13 @@ import static java.util.Collections.emptyMap;
 
 public class App {
     public static void main(String[] args) {
-        DumpSettings settings = DumpSettings.builder().build();
+        DumpSettings settings = DumpSettings.builder().setDumpComments(true).build();
         StreamDataWriter writer = new StreamToStringWriter();
         Emitter emitter = new Emitter(settings, writer);
         emitter.emit(new StreamStartEvent());
         emitter.emit(new DocumentStartEvent(false, Optional.empty(), emptyMap()));
         emitter.emit(new CommentEvent(CommentType.BLOCK, "Hello world!", Optional.empty(), Optional.empty()));
+        emitter.emit(new ScalarEvent(Optional.empty(), Optional.empty(), new ImplicitTuple(true, true), "This is the scalar", ScalarStyle.DOUBLE_QUOTED));
         emitter.emit(new DocumentEndEvent(false));
         emitter.emit(new StreamEndEvent());
 
